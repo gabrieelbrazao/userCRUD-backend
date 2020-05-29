@@ -1,11 +1,12 @@
-import express from 'express'
-import cors from 'cors'
-import { createConnection } from 'typeorm'
+import express from "express"
+import cors from "cors"
+import { createConnection } from "typeorm"
+import routes from "./routes"
 
 class App {
   public express: express.Application
 
-  public constructor () {
+  public constructor() {
     this.express = express()
 
     this.middlewares()
@@ -13,17 +14,17 @@ class App {
     this.routes()
   }
 
-  private middlewares (): void {
+  private middlewares(): void {
     this.express.use(express.json())
     this.express.use(cors())
   }
 
-  private database (): void {
+  private database(): void {
     createConnection()
   }
 
-  private routes (): void {
-    this.express.get('/', (req, res) => res.json({ Hello: 'World' }))
+  private routes(): void {
+    this.express.use(routes)
   }
 }
 

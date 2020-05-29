@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm"
 
 @Entity()
 export class User {
@@ -17,8 +23,8 @@ export class User {
   @Column()
   password_hash: string
 
-  @Column()
-  is_active: boolean
+  @Column("boolean")
+  is_active: number
 
   @CreateDateColumn()
   created_at: Date
